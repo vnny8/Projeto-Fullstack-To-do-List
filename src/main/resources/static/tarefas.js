@@ -191,7 +191,8 @@ function exibirTarefas() {
                     acoes.appendChild(completadoBtn);
 
                     const editarBtn = document.createElement("button");
-                    editarBtn.className = "btn btn-info ml-1";
+                    editarBtn.className = "btn btn-info";
+                    editarBtn.style.marginLeft = "5px";
                     editarBtn.style.backgroundColor = "#1E90FF";
                     editarBtn.type = "submit";
                     editarBtn.id = "editar";
@@ -208,8 +209,9 @@ function exibirTarefas() {
                     acoes.appendChild(editarBtn);
 
                     const removerBtn = document.createElement("button");
-                    removerBtn.className = "btn btn-danger ml-1";
+                    removerBtn.className = "btn btn-danger";
                     removerBtn.innerHTML = '<i class="fas fa-trash"></i>';
+                    removerBtn.style.marginLeft = "5px";
                     removerBtn.style.backgroundColor = "#C00000";
                     removerBtn.type = "submit";
                     removerBtn.id = "deletar";
@@ -227,7 +229,7 @@ function exibirTarefas() {
                         verificarPrazoExpirado(tarefa, (tarefaExpirada) => {
                         clearInterval(intervalId); // Parar a verificação para esta tarefa
                         });
-                    }, 10000);
+                    }, 1000);
                 }
             });
         })
