@@ -16,10 +16,6 @@
 
 O projeto "Fullstack To-do List" visa criar uma solução eficaz para gerenciar tarefas e projetos pessoais ou de equipe, combinando uma interface de usuário intuitiva e recursos robustos para melhorar a produtividade e a organização. Utilizando tecnologias modernas como HTML, CSS e Bootstrap para o front-end, e Spring Boot para o back-end, esta aplicação fullstack oferece uma plataforma poderosa e fácil de usar para criação, gerenciamento e conclusão de tarefas diárias.
 
-## Documentação
-
-* [Documentação (para desenvolvedores)](DOCUMENTACAO.md)
-
 ## Sobre o autor
 
 |  |  |
