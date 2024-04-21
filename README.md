@@ -8,7 +8,7 @@
 
 **Este projeto foi desenvolvido como uma fase do processo seletivo do Grupo Optimus, realizado de 19 de abril até 25 de abril de 2024. 
 
-# Projeto-Fullstack-To-do-List
+# Projeto Fullstack To-do-List
 
 <!-- Substitua a seguinte imagem por uma logo do seu projeto -->
 <img src="Optimus.png" width="150px">
