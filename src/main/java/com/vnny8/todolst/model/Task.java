@@ -38,4 +38,14 @@ public class Task {
     @Column(name= "Atualizado_em")
     private LocalDateTime atualizadoEm;
 
+    @Column(nullable = false)
+    private String status;
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
+    }
 }

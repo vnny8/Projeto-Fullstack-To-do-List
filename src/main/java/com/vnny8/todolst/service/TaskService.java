@@ -34,6 +34,7 @@ public class TaskService {
                     taskParaAtualizar.setTitulo(tarefa.getTitulo());
                     taskParaAtualizar.setDescricao(tarefa.getDescricao());
                     taskParaAtualizar.setPrazoFinal(tarefa.getPrazoFinal());
+                    taskParaAtualizar.setStatus(tarefa.getStatus());
                     Task Atualizado = taskRepository.save(taskParaAtualizar);
                     return ResponseEntity.ok().body(Atualizado);
                 }).orElse(ResponseEntity.notFound().build());

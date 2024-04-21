@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/")
 @AllArgsConstructor
 @Slf4j
 public class TaskController {
@@ -32,6 +32,7 @@ public class TaskController {
     @ResponseStatus(HttpStatus.CREATED)
     public Task criarTarefa(@RequestBody Task tarefa){
         log.info("Criando uma nova tarefa [{}]", tarefa);
+        tarefa.setStatus("Pendente");
         return taskService.criarTarefa(tarefa);
     }
 

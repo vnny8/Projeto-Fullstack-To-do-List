@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de tarefas</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v6.5.0/css/all.css'>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./tarefas.js" defer></script>
+</head>
+<body style="background-color: #212121;">
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: black;">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="/"><b>Lista de tarefas</b></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+
+<div class="container" style="margin-top: 70px;">
+    <h2><b style="color: white;">Tarefas Pendentes</b></h2>
+    <div class="row m-1 mb-2 p-4" style="background-color: #F1F1F1; border-radius: 12px;">
+        <table class="table table-borderless" style="background-color: #F1F1F1;">
+            <thead>
+            <tr>
+                <th scope="col">Título</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Prazo Final</th>
+                <th scope="col">Status</th>
+                <th scope="col">Ações</th>
+            </tr>
+            </thead>
+            <tbody id="lista-tarefas">
+            <!-- As tarefas serão adicionadas aqui -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="container" style="margin-top: 10px;">
+    <button id="edit" class="btn editButton m-1 mb-2" data-target="editForm{{ forloop.counter }}" style="border-radius: 12px; width: 100%; background-color: #3e6332;"><i class="fa-solid fa-plus fa-2x" style="color: white;"></i></button>
+</div>
+
+<div id="editForm{{ forloop.counter }}" style="display:none">
+    <div class="container" style="margin-top: 20px;">
+        <div class="card" data-target="slide-content" style="background-color: #F1F1F1; border-radius: 16px;">
+            <div class="card-body">
+                <div class="row m-1 mb-2 p-4" style="background-color: #F1F1F1; border-radius: 16px;">
+                    <form class="tarefaSubmit form-horizontal" method='POST'>
+                        <div class="form-group">
+                            <label for="titulo">Título</label>
+                            <input type="text" class="form-control" id="titulo" style="border-radius: 7px;" placeholder="Título da tarefa" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="descricao">Descrição</label>
+                            <textarea class="form-control" id="descricao" rows="3" style="border-radius: 7px;" placeholder="Descrição da tarefa" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="data">Prazo Final</label>
+                            <input type="date" class="form-control" style="border-radius: 7px;" id="data" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="hora">Hora Final</label>
+                            <input type="time" class="form-control" style="border-radius: 7px;" id="hora" required>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn" style="background-color: #3e6332; color: white; border-radius: 7px;">Adicionar Tarefa</button>
+                        </div>
+
+                    </form>
+                    <div id="resultado"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container" style="margin-top: 30px;">
+    <h2><b style="color: white;">Histórico de tarefas</b></h2>
+    <div class="row m-1 mb-2 p-4" style="background-color: #F1F1F1; border-radius: 12px;">
+        <table class="table table-borderless" style="background-color: #F1F1F1;">
+            <thead>
+            <tr>
+                <th scope="col">Título</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Prazo Final</th>
+                <th scope="col">Status</th>
+                <th scope="col">Ações</th>
+            </tr>
+            </thead>
+            <tbody id="lista-tarefas-completadas">
+            <!-- As tarefas serão adicionadas aqui -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Editar tarefa</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form class="formularioEdicao form-horizontal" method='POST'>
+                    <input type="hidden" class="form-control" id="id">
+                    <div class="form-group">
+                        <label for="titulo">Título</label>
+                        <input type="text" class="form-control" id="titulo2" style="border-radius: 7px;" placeholder="Título da tarefa" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="descricao">Descrição</label>
+                        <textarea class="form-control" id="descricao2" rows="3" style="border-radius: 7px;"required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="data">Prazo Final</label>
+                        <input type="date" class="form-control" style="border-radius: 7px;" id="data2" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="hora">Hora Final</label>
+                        <input type="time" class="form-control" style="border-radius: 7px;" id="hora2" required>
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success">Salvar alterações</button>
+            </div>
+            </form>
+            <div id="resultado2"></div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var editButtons = document.querySelectorAll('.editButton');
+
+        editButtons.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                var targetId = btn.getAttribute('data-target');
+                var editForm = document.getElementById(targetId);
+                if (editForm.style.display === "none") {
+                    editForm.style.display = "block";
+                } else {
+                    editForm.style.display = "none";
+                }
+            });
+        });
+    });
+    $('#exampleModalCenter').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget); // Botão que acionou o modal
+
+    // Recuperando os dados dos atributos
+    var id = button.data('id');
+    var titulo = button.data('titulo');
+    var descricao = button.data('descricao');
+    var data = button.data('data');
+    var hora = button.data('hora');
+
+    // Preenchendo os campos do formulário no modal
+    var modal = $(this);
+    modal.find('#id').val(id);
+    modal.find('#titulo2').val(titulo);
+    modal.find('#descricao2').val(descricao);
+    modal.find('#data2').val(data);
+    modal.find('#hora2').val(hora.split(':')[0] + ':' + hora.split(':')[1]); // Corta os segundos se houver
+});
+
+</script>
+
+</body>
+</html>
