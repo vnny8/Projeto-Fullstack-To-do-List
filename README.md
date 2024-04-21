@@ -30,7 +30,7 @@ Tecnologias Utilizadas.
 
 - Front-end: Desenvolvido usando HTML para estrutura, CSS para estilização e Bootstrap  para layout responsivo e componentes interativos.
   
-- Back-end: Implementado com Spring Boot, proporcionando uma arquitetura robusta, facilitando a integração com bancos de dados e oferecendo uma API RESTful para operações CRUD.
+- Back-end: Implementado com Spring Boot, proporcionando uma arquitetura robusta, facilitando a integração com bancos de dados e oferecendo uma API para operações CRUD.
 
 ## Sobre o autor
 
