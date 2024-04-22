@@ -14,19 +14,20 @@
 <img src="Optimus.png" width="150px">
 <h6>Optimus logo</h6>
 
-O projeto "Fullstack To-do List" visa criar uma solução eficaz para gerenciar tarefas e projetos pessoais ou de equipe, combinando uma interface de usuário intuitiva e recursos robustos para melhorar a produtividade e a organização. Utilizando tecnologias modernas como HTML, CSS e Bootstrap para o front-end, e Spring Boot para o back-end, esta aplicação fullstack oferece uma plataforma poderosa e fácil de usar para criação, gerenciamento e conclusão de tarefas diárias.
+O projeto "Fullstack To-do List" visa criar uma solução eficaz para gerenciar tarefas e projetos pessoais, combinando uma interface de usuário intuitiva e recursos robustos para melhorar a produtividade e a organização. Utilizando tecnologias modernas como HTML, CSS e Bootstrap para o front-end, e Spring Boot para o back-end, esta aplicação fullstack oferece uma plataforma poderosa e fácil de usar para criação, gerenciamento e conclusão de tarefas diárias.
 
 ## Descrição do Projeto
 
 # Funcionalidades do Sistema
-- Criação de Tarefas: Usuários podem adicionar novas tarefas fornecendo detalhes como título, descrição, prioridade e prazos.
+- Criação de Tarefas: Usuários podem adicionar novas tarefas fornecendo detalhes como título, descrição e prazo de término da tarefa.
   
-- Visualização de Tarefas: Todas as tarefas são exibidas em uma lista ou em um formato de calendário, com opções para filtrar por data, prioridade ou status.
+- Visualização de Tarefas: Todas as tarefas são exibidas em uma lista.
   
 - Edição e Deleção: As tarefas podem ser editadas ou removidas conforme necessário, permitindo flexibilidade total na gestão de tarefas.
   
 - Marcação de Conclusão: Tarefas podem ser marcadas como concluídas com um simples clique, movendo-as automaticamente para a seção de tarefas concluídas.
-Tecnologias Utilizadas.
+  
+# Tecnologias Utilizadas.
 
 - Front-end: Desenvolvido usando HTML para estrutura, CSS para estilização e Bootstrap  para layout responsivo e componentes interativos.
   
